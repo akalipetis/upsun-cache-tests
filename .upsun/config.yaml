@@ -93,7 +93,6 @@ applications:
       # More information: https://docs.upsun.com/create-apps/hooks/hooks-comparison.html#build-hook
       build: |
         set -eux
-        env
         # Set PIP_USER to 0 so that Poetry does not complain
         export PIP_USER=0
         # Install poetry as a global tool
@@ -213,7 +212,6 @@ applications:
       # More information: https://docs.upsun.com/create-apps/hooks/hooks-comparison.html#build-hook
       build: |
         set -eux
-        env
         # Set PIP_USER to 0 so that Pipenv does not complain
         export PIP_USER=0
         # Install pipenv as a global tool

@@ -257,11 +257,11 @@ applications:
 # to be processed by Upsun.
 # More information: https://docs.upsun.com/define-routes.html
 routes:
-  "https://{default}/":
+  "https://poetry.{default}/":
     type: upstream
-    upstream: "upsun-cache-tests:http"
+    upstream: "poetry:http"
   # A basic redirect definition
   # More information: https://docs.upsun.com/define-routes.html#basic-redirect-definition
-  "https://www.{default}":
-    type: redirect
-    to: "https://{default}/"
+  "https://pipenv.{default}":
+    type: upstream
+    upstream: "pipenv:http"

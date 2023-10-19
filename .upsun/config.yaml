@@ -69,6 +69,8 @@ applications:
         POETRY_VERSION: "1.6.1"
         POETRY_VIRTUALENVS_IN_PROJECT: "true"
         POETRY_CACHE_DIR: /mnt/cache/poetry
+        N_PREFIX: /app/.global
+        N_CACHE_PREFIX: /mnt/cache/n
 
     # Outbound firewall rules for the application. More information: https://docs.upsun.com/create-apps/app-reference.html#firewall
     # firewall:
@@ -82,9 +84,9 @@ applications:
     # are available in the PATH during the build process and in the runtime environment. They’re installed before
     # the build hook runs using a package manager for the language.
     # More information: https://docs.upsun.com/create-apps/app-reference.html#dependencies
-    # dependencies:
-    #   python3: # Specify one Python 3 package per line.
-    #     numpy: '*'
+    dependencies:
+      nodejs: # Specify one Python 3 package per line.
+        n: "*"
 
     # Hooks allow you to customize your code/environment as the project moves through the build and deploy stages
     # More information: https://docs.upsun.com/create-apps/app-reference.html#hooks
@@ -99,6 +101,7 @@ applications:
         python -m venv /app/.global
         pip install poetry==$POETRY_VERSION
         poetry install
+        n lts
 
       # The deploy hook is run after the app container has been started, but before it has started accepting requests.
       # More information: https://docs.upsun.com/create-apps/hooks/hooks-comparison.html#deploy-hook
